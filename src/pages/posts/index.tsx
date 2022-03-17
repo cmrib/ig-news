@@ -9,8 +9,7 @@ type Post = {
     slug: string;
     title: string;
     excerpt: string;
-    updatedAt: string
-
+    updatedAt: string;
 }
 
 interface PostsProps {
@@ -27,21 +26,13 @@ export default function Posts({ posts }: PostsProps) {
 
             <main className={styles.container}>
                 <div className={styles.posts}>
-
-                    {posts.map(post => {
-                        return (
-                            <a href="" key={post.slug}>
-                                <time>{post.updatedAt}</time>
-                                <strong>
-                                    {post.title}
-                                </strong>
-                                <p>
-                                    {post.excerpt}
-                                </p>
-                            </a>
-                        )
-                    })}
-
+                    {posts.map(post => (
+                        <a key={post.slug} href="#" >
+                            <time> {post.updatedAt} </time>
+                            <strong> {post.title} </strong>
+                            <p> {post.excerpt} </p>
+                        </a>
+                    ))}
                 </div>
             </main>
         </>
@@ -61,7 +52,6 @@ export const getStaticProps: GetStaticProps = async () => {
     )
 
     // formatando os posts
-
 
     const posts = response.results.map(post => {
         return {
